@@ -8,6 +8,7 @@ class MatrizD{
     }
     append(fila,columna,dato){
         var nuevo= new Nodo(fila,columna,dato);
+
         var CFila=this.CFilas.getCabecera(fila);
         if (CFila==null){
             var CFila=new nCabecera(fila);
@@ -39,6 +40,42 @@ class MatrizD{
                 
             }
         }
+
+
+
+        var CColumna=this.CColumnas.getCabecera(columna);
+        if (CColumna==null){
+            var CColumna=new nCabecera(columna);
+            CColumna.accesoNodo=nuevo;
+            this.CColumnas.appendCabecera(CColumna);
+        }
+        else{
+            if (nuevo.fila<CColumna.accesoNodo.fila){
+                nuevo.abajo=CColumna.accesoNodo;
+                CColumna.accesoNodo.arriba=nuevo;
+                CColumna.accesoNodo=nuevo;
+            }
+            else{
+                var actual=CColumna.accesoNodo;
+                while(actual.abajo!=null){
+                    if(nuevo.fila<actual.abajo.fila){
+                        nuevo.dabajo=actual.abajo;
+                        actual.abajo.arriba=nuevo;
+                        nuevo.arriba=actual;
+                        actual.abajo=nuevo;
+                        break
+                    }
+                    actual=actual.abajo;
+                }
+                if(actual.abajo==null){
+                    actual.abajo=nuevo;
+                    nuevo.arriba=actual;
+                }
+                
+            }
+        }
     }
 
 }
+var df=new MatrizD();
+df.append(1,1,"2");
