@@ -1,27 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista doble circular</title>
-    <link rel="stylesheet" href="./asdf.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto1</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/w3.css">
+<link rel="stylesheet" href="./css/css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+
+<link rel="stylesheet" href="css/Style.css">
+
+
 </head>
 <body>
-    <h1>Primer Recorrido</h1>
-    <div id="dss">   </div>
-    <h1>Segundo Recorrido</h1>
-    <div id="dss2">   </div>
-    <h1>Tercer Recorrido</h1>
-    <div id="dss3">   </div>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
-    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
-    <script type="module" src="js/MatrizDispersa.js"></script>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index: 3; width: 300px; font-weight: bold; display: none;" id="mySidebar"><br>
+  
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Proyecto 1<br>EDD</b></h3>  <!-- aca iria el login-->
+     Usuario:
+    <input type="text" id="Usuario">
+    <br>
+    <br>
+    Contraseña:
+    <input type="text" id="contraseña">
+    <br>
+    <br>
+    <button id="botonRegistro" >Siguiente</button>
+    <br>
+    <br>
+  </div>
+
+  <div class="w3-bar-block" id="BMenu" style="display: none" >
+    <a  id="hola" class="w3-bar-item w3-button w3-hover-white">Carga Masiva</a> 
+    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
+    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
+    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
+    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a> 
+    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+  </div>
+  
+  
+
+  <div class="w3-container" id="services" style="margin-left:340px;margin-right:40px">
     
-    
-        
-    </div>
-    
+  </div>
+  
+  
+  
+
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+  <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
