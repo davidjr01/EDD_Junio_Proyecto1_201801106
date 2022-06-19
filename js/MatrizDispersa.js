@@ -1,13 +1,14 @@
 import{Nodo,nCabecera} from './Nodo.js'
 import { listaCabeceras } from './Cabecera.js'
+export  {MatrizD}
 
 class MatrizD{
     constructor(){
         this.CFilas=new listaCabeceras();
         this.CColumnas=new listaCabeceras();
     }
-    append(fila,columna,dato){
-        var nuevo= new Nodo(fila,columna,dato);
+    append(fila,columna,isbn,nombre_autor,nombre_libro,cantidad,paginas,categoria){
+        var nuevo= new Nodo(fila,columna,isbn,nombre_autor,nombre_libro,cantidad,paginas,categoria);
 
         var CFila=this.CFilas.getCabecera(fila);
         if (CFila==null){
@@ -76,6 +77,48 @@ class MatrizD{
         }
     }
 
+    verificarExiste( ff, cc){
+        var encontrado=false;
+        let CFila = this.CFilas.primero;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual !=null){
+                let c=actual.columna;
+                if ((c==cc) && ( f==ff)){
+                    encontrado=true;
+                }
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+        return encontrado;
+    }
+    
+    Actualizar( ff,  cc, isbn,nombre_autor,nombre_libro,cantidad,paginas,categoria){
+        let CFila = this.CFilas.primero;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                let c=actual.columna;
+                if ((c==cc) && ( f==ff)){ 
+                    actual.isbn=isbn;
+                    actual.nombre_autor=nombre_autor;
+                    actual.nombre_libro=nombre_libro;
+                    actual.cantidad=cantidad;
+                    actual.paginas=paginas;
+                    actual.categoria=categoria;
+                    
+                }
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+    }
+
     graficar(){
         var controlx=0;
         var CFila=new nCabecera();
@@ -128,7 +171,7 @@ class MatrizD{
                 primerony+=1;
                 
                 var nombrenodo="n"+actual.fila+"c"+actual.columna;
-                var y="\"" +actual.dato+"\"";
+                var y="\"" +actual.nombre_libro+"\"";
                 var nodo=nombrenodo+"[label= "+ y+"group="+ (actual.columna +1 )+ ",style=\"filled\"]";
                 nodoof += nodo+"\n";
                 
@@ -222,18 +265,13 @@ class MatrizD{
         //___________________________________________________
         resultado+="}";
         console.log(resultado);
-        d3.select("#dss").graphviz()
-                .width (5000)
-                .height(200)
-                .renderDot(resultado);
+        //d3.select("#dss").graphviz()
+          //      .width (5000)
+            //    .height(200)
+              //  .renderDot(resultado);
      
 
 
     }
 
 }
-var df=new MatrizD();
-df.append(1,1,"a");
-df.append(2,1,"b");
-df.append(4,5,"c");
-df.graficar();

@@ -39,7 +39,7 @@ body {font-size:16px;}
   </div>
 
   <div class="w3-bar-block" id="BMenu" style="display: none" >
-    <a  id="hola" class="w3-bar-item w3-button w3-hover-white">Carga Masiva</a> 
+    <a  id="botCargaMasiva" class="w3-bar-item w3-button w3-hover-white">Carga Masiva</a> 
     <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
     <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
     <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
@@ -52,12 +52,32 @@ body {font-size:16px;}
 
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
-
-
+<div class="w3-main w3-center" id="cargaMasiva" style="margin-left:340px;margin-right:40px">
+<br>
+<div class="containers">
+<P>CARGA MASIVA LIBROS :</P>
+<input class="form-control" type="file" id="fileLibros">
+ <br>
+ <br>
+ </div>  
+ <br>
+ <div class="containers">
+  <P>CARGA MASIVA AUTORES :</P>
+  <input class="form-control" type="file" id="fileAutores">
+  <br>
+  <br>
   </div>
-  
-  
+  <br>
+  <div class="containers">
+    <P>CARGA MASIVA USUARIOS :</P>
+    <input class="form-control" type="file" id="fileUsuarios">
+    <br>
+    <br>
+    </div>
+    <br>
+    <button id="BTCM">Siguiente</button>
+    <br>
+</div>
 
   <div class="w3-container" id="services" style="margin-left:340px;margin-right:40px">
     
