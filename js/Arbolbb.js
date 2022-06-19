@@ -1,8 +1,36 @@
+export{Arbolbb}
 class Nodo{
-    constructor( valor){
-            this.valor = valor;
-            this.rama_izquierda = null;
-            this.rama_derecha = null;
+    constructor(dpi,nombre,correo,telefono,direccion,biografia){
+        this.dpi = dpi;
+        this.nombre = nombre;
+        this.correo=correo;
+        this.telefono=telefono;
+        this.direccion=direccion;
+        this.biografia=biografia;
+        this.rama_izquierda = null;
+        this.rama_derecha = null;
+    }
+
+    textoGraphviz(){
+        if(this.rama_izquierda == null && this.rama_derecha == null){
+            let tc=this.nombre+"";
+            tc=tc.replace(" ","_")
+            return tc;
+        }
+        else{
+            var texto = "";
+            if(this.rama_izquierda !=null){
+                let tc=this.nombre+"";
+                tc=tc.replace(" ","_")
+                texto  += tc +"->"+ this.rama_izquierda. textoGraphviz()+"\n";
+            }
+            if(this.rama_derecha!=null){
+                let tc=this.nombre+"";
+                tc=tc.replace(" ","_")
+                texto += tc+"->"+this.rama_derecha. textoGraphviz()+"\n";
+            }
+            return texto;
+        }
     }
 
 }
@@ -12,51 +40,59 @@ class Arbolbb{
         this.raiz = null;
         this.tamañ0 = null;
     }
-    insertar(valor){
-        var nuevo_nodo = new Nodo(valor)
-        if (this.raiz == null){
-            this.raiz = nuevo_nodo;
+    Insertar(dpi,nombre,correo,telefono,direccion,biografia){
+        this.raiz = this.recorrer_insert(dpi,nombre,correo,telefono,direccion,biografia, this.raiz);
+        this.tamaño+=1;
+    }
+    recorrer_insert(dpi,nombre,correo,telefono,direccion,biografia,raiz){
+        if (raiz == null){
+            var nodos =new Nodo(dpi,nombre,correo,telefono,direccion,biografia);
+            return nodos;
+        }
+        else if (nombre==raiz.nombre){     
         }
         else{
-            recorrer(valor, nodo);
-                if (valor == nodo.valor){
-                    return "El elemento ya existe";
-                }
-                else if (valor < nodo.valor){
-                    if (nodo.rama_izquierda == null){
-                        nodo.rama_izquierda = nuevo_nodo;
-                        return true;
-                    }
-                    else{
-                        return recorrer(valor, nodo.rama_izquierda);
-                    }
-                }
-                else if ( valor > nodo.valor){
-                    if (nodo.rama_derecha == null){
-                        nodo.rama_derecha = nuevo_nodo;
-                        return true;
-                    }
-                    else{
-                        return recorrer(valor, nodo.rama_derecha);
-                    }
-                }
-            recorrer(valor, this.raiz);
+            if (nombre < raiz.nombre){
+                raiz.rama_izquierda = this.recorrer_insert(dpi,nombre,correo,telefono,direccion,biografia,raiz.rama_izquierda);
+            }
+            else{
+                raiz.rama_derecha = this.recorrer_insert(dpi,nombre,correo,telefono,direccion,biografia,raiz.rama_derecha);
+            }
         }
+        return raiz;
     }
-    def find(self, valor):
-        def recorrer(valor, nodo):
-            if valor == nodo.valor:
-                return nodo.valor
-            elif valor < nodo.valor:
-                if nodo.rama_izquierda == None:
-                    return "No existe el elemento buscado"
-                else:
-                    return recorrer(valor, nodo.rama_izquierda)
-            else:
-                if nodo.rama_derecha == None:
-                    return "No existe el elemento buscado"
-                else:
-                    return recorrer(valor, nodo.rama_derecha)
-        nodo_encontrado = recorrer(valor, self.raiz)
-        return print(nodo_encontrado);
+
+    recorrer_inorden(nodo){
+        if (nodo.rama_izquierda!=null){
+            this.recorrer_inorden(nodo.rama_izquierda); 
+        }
+        console.log(nodo.nombre);//aca salen los nodos
+        if (nodo.rama_derecha!=null){
+            this.recorrer_inorden(nodo.rama_derecha); 
+        }    
+        return 0;
+    }
+
+    Inorden(){
+        this.recorrer_inorden(this.raiz);
+    }
+    
+
+    Graficar() {
+        var texto ="digraph G{\n"
+               +"\n"
+               +"node [shape = circle]\n"
+               +"node [stile = filled]\n"
+               +"node [fillcolor =\" #EEEEE\"]\n"
+               +"node [color =\" green\"]\n"
+               +"edge[color =\" #31CEF0\"]\n";
+        if(this.raiz !=null){
+            texto+=this.raiz.textoGraphviz();
+        }
+        texto+= "\n}";
+        console.log(texto);
+    }
+
+    
+        
 }

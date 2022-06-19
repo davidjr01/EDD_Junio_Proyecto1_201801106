@@ -55,6 +55,8 @@ class binary_search_tree:
                 recorrer(nodo.rama_derecha)
         recorrer(self.raiz)
         return print(contenedor)
+
+        
     def inorder(self):
         contenedor = []
         def recorrer(nodo):
@@ -65,6 +67,9 @@ class binary_search_tree:
                 recorrer(nodo.rama_derecha)
         recorrer(self.raiz)
         return print(contenedor)
+
+
+
     def postorder(self):
         contenedor = []
         def recorrer(nodo):

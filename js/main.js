@@ -1,14 +1,19 @@
 import{MatrizD} from './MatrizDispersa.js'
+import{Arbolbb} from './Arbolbb.js'
 var Bre=document.getElementById("botonRegistro");
 var BTCM=document.getElementById("BTCM");
 var MOrtogonal=new MatrizD();
 var MDispersa=new MatrizD();
+var Arbol=new Arbolbb();
+
+
 
 for (let i=1;i<=25;i++){
     for (let j=1;j<=25;j++){
         MOrtogonal.append(i,j,"","","","","","");
     }
 }
+
 
 //MOrtogonal.graficar();
 
@@ -24,7 +29,7 @@ function Registro(){
 }
 
 function graficar(){
-    MDispersa.graficar();
+    Arbol.Graficar();
 
 }
 
@@ -85,8 +90,8 @@ function CargarAutores(e) {
 
         for (const key in object) {
             let CAutores = object[key];
-            console.log(CAutores.dpi,CAutores.nombre_autor,CAutores.correo,CAutores.telefono,CAutores.direccion,CAutores.biografia);
-            mensaje=CAutores.nombre_autor;
+            Arbol.Insertar(CAutores.dpi,CAutores.nombre_autor,CAutores.correo,CAutores.telefono,CAutores.direccion,CAutores.biografia);
+            
         }
         
     }
