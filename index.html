@@ -15,6 +15,7 @@ body {font-size:16px;}
 </style>
 
 <link rel="stylesheet" href="css/Style.css">
+<link rel="stylesheet" href="css/style2.css">
 
 
 </head>
@@ -22,9 +23,10 @@ body {font-size:16px;}
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index: 3; width: 300px; font-weight: bold; display: none;" id="mySidebar"><br>
+  <h3 class="w3-padding-64"><b>Proyecto 1<br>EDD</b></h3>  <!-- aca iria el login-->
   
-  <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Proyecto 1<br>EDD</b></h3>  <!-- aca iria el login-->
+  <div class="w3-container" id="Loginghtml">
+    
      Usuario:
     <input type="text" id="Usuario">
     <br>
@@ -40,11 +42,8 @@ body {font-size:16px;}
 
   <div class="w3-bar-block" id="BMenu" style="display: none" >
     <a  id="botCargaMasiva" class="w3-bar-item w3-button w3-hover-white">Carga Masiva</a> 
-    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
-    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
-    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
-    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a> 
-    <a  onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+    <a  id="botVistas" class="w3-bar-item w3-button w3-hover-white">Vistas</a> 
+    <a  id="Salir" class="w3-bar-item w3-button w3-hover-white">Salir</a>
   </div>
 </nav>
 
@@ -52,7 +51,8 @@ body {font-size:16px;}
 
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main w3-center" id="cargaMasiva" style="margin-left:340px;margin-right:40px">
+<div id="cargaMasiva" style="display: none">
+<div class="w3-main w3-center" id="cargaMasiva" style="margin-left:340px;margin-right:40px ">
 <br>
 <div class="containers">
 <P>CARGA MASIVA LIBROS :</P>
@@ -78,8 +78,50 @@ body {font-size:16px;}
     <button id="BTCM">Siguiente</button>
     <br>
 </div>
+</div>
+
+  <div class="w3-container w3-center " id="Vistas" style="margin-left:390px;margin-right:90px"><!--div margen -->
+      <br>
+      <h1 class="w3-padding-54"><b>Vista Librera  </b></h1>
+
+      <div class="containers" ><!--div containersr -->
+        <h1 class="w3-padding-10"><b>Thriller</b></h1>
+        <div class="holder" style ="margin-left:110px; margin-top:50px;">
+          <ul id="LMO">        
+          </ul>
+        </div><!-- ENDS holder -->
+        <br>
+        <br>
+      </div><!--div containers -->
+      <br>
+      <br>
+
+      <div class="containers" id="ESMO" ><!--div containersr matriz en graphiz -->
+        
+      </div><!--div containers -->
+      <br>
+      <br>
+
+
+      <div class="containers" ><!--div containersr -->
+        <h1 class="w3-padding-10"><b>Fantasia</b></h1>
+        <div class="holder" style ="margin-left:110px; margin-top:50px;">
+          <ul id="LMD">        
+          </ul>
+        </div><!-- ENDS holder -->
+        <br>
+        <br>
+      </div><!--div containers -->
+
+
+  </div><!--div margen -->
+  <br>
+  <br>
+
+
 
   <div class="w3-container" id="services" style="margin-left:340px;margin-right:40px">
+    
     
   </div>
   

@@ -119,6 +119,57 @@ class MatrizD{
         }
     }
 
+    Obtener(){
+        let CFila = this.CFilas.primero;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                if (actual.nombre_autor!=""){
+                    //console.log(actual.nombre_autor);
+                    console.log(actual.nombre_libro);
+
+                }
+                   
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+    }
+
+    ObtenerHTML(){
+        var datogeneral="";
+        var daux="";
+        var daux2="";
+        var daux3="";
+        let CFila = this.CFilas.primero;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                if (actual.nombre_autor!=""){
+                    //console.log(actual.nombre_autor);
+                    daux=`<div class="block">
+                    <div class="thumb-holder"> <img src="img/libro2.jpg"  class="thumb" />  </div>
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="customs">`+actual.nombre_libro+"</h2>\n"
+                    daux2="<h5 class=\"custom2\">Autor : "+actual.nombre_autor+"</h5>";
+                    daux3="<p class=\"thumb-text\"></p> \n </div> \n\n";
+                    datogeneral+=daux+daux2+daux3;
+                }
+                
+                   
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+        return datogeneral;
+    }
+
     graficar(){
         var controlx=0;
         var CFila=new nCabecera();
@@ -172,7 +223,7 @@ class MatrizD{
                 
                 var nombrenodo="n"+actual.fila+"c"+actual.columna;
                 var y="\"" +actual.nombre_libro+"\"";
-                var nodo=nombrenodo+"[label= "+ y+"group="+ (actual.columna +1 )+ ",style=\"filled\"]";
+                var nodo=nombrenodo+"[label= "+ y+"group="+ (actual.columna +1 )+ ",style=\"filled\" ,fontcolor=\"red\"]";
                 nodoof += nodo+"\n";
                 
                 nombrex=nombrenodo;
@@ -265,13 +316,11 @@ class MatrizD{
         //___________________________________________________
         resultado+="}";
         console.log(resultado);
-        //d3.select("#dss").graphviz()
-          //      .width (5000)
-            //    .height(200)
-              //  .renderDot(resultado);
+        d3.select("#ESMO").graphviz()
+                .width (7000)
+                .height(1000)
+                .renderDot(resultado);
      
-
-
     }
 
 }

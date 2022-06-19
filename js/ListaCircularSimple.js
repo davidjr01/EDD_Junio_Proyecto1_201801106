@@ -49,7 +49,7 @@ class ListaCircular{
             contador -= 1;
         }
     }
-
+    
     BuscarL(usuario,contrasenia){
         var actual = this.cabeza;
         var contador = this.tamaño;
@@ -57,14 +57,14 @@ class ListaCircular{
         var pase=false;
         while (contador!=0){
             cont+=1;
-            if(()&&()){
-
+            if((usuario==actual.usuario)&&(contrasenia==actual.contrasenia)){
+                pase=true;
+                break;
             }
-
-
             actual = actual.siguiente;
             contador -= 1;
         }
+        return pase;
     }
 
     Agregar_lista(dpi,valor){

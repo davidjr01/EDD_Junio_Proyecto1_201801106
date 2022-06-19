@@ -1,0 +1,105 @@
+
+@import url('reset.css');
+
+
+
+
+.custom2{
+	font-size: 18px;
+	line-height: 1.5em;
+	font-weight: bold;
+	color: #665d4e;
+}
+
+
+
+
+
+
+
+.customs{
+	text-decoration: none;
+	font-size: 32px;
+	line-height: 1.5em;
+	color: #665d4e;
+}
+
+
+
+
+/* MAIN ------------------------------------------------------------*/
+
+div#main{
+	width: 100%;
+	min-height: 650px;
+	position: relative;
+	overflow: hidden;
+}
+
+
+div.holder{
+	overflow: hidden;
+}
+
+div.holder div.block{
+	width: 307px;
+	float: left;
+	margin: 0px 18px 0px 0px;
+}
+
+
+div.holder div.last{
+	margin: 0px 0px 70px 0px;
+}
+
+
+div.holder div.block div.thumb-holder{
+	position: relative;
+	width: 307px;
+	height: 129px;
+	background: url(../img/thumb-bg.png) no-repeat;
+	margin-bottom: 5px;
+}
+
+div.holder div.block img.thumb{
+	position: absolute;
+	top:2px;
+	left: 2px;
+}
+
+div.holder div.block h2{
+	line-height: 1em;
+	margin-bottom: 0px;
+	text-indent: 0px;
+	background: none transparent;
+}
+
+div.holder div.block h3{
+	line-height: 1em;
+	margin-bottom: 10px;
+}
+
+div.holder div.block p.thumb-text{
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #665d4e;
+	border-top: 2px solid #665d4e;
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+div.top-img{
+	width: 100%;
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+
+div.top-img img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+
+

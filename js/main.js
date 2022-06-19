@@ -4,6 +4,11 @@ import { ListaCircular } from './ListaCircularSimple.js';
 import{ListaCCliente} from './ListaCClientes.js'
 var Bre=document.getElementById("botonRegistro");
 var BTCM=document.getElementById("BTCM");
+var BTsalir=document.getElementById("Salir");
+
+
+
+
 var MOrtogonal=new MatrizD();
 var MDispersa=new MatrizD();
 var Arbol=new Arbolbb();
@@ -26,23 +31,41 @@ for (let i=1;i<=25;i++){
 function Registro(){
     var iUsuario=document.getElementById("Usuario").value;
     var ipass=document.getElementById("contraseña").value;
-    if((iUsuario=="admin")&& (ipass=="123")){
+    var verific=LUsuarios.BuscarL(iUsuario,ipass);
+    if(verific==true){
+        alert("Bienvenido " + iUsuario);
         document.getElementById('BMenu').style.display='';
-    }else{
+        document.getElementById('cargaMasiva').style.display='';
+        document.getElementById("Usuario").value=""
+        document.getElementById("contraseña").value=""
+        document.getElementById('Loginghtml').style.display='none';
+        
+    }
+    else{
         alert("ingrese bien datos");
+        document.getElementById("Usuario").value=""
+        document.getElementById("contraseña").value=""
     }
     
 }
 
 function graficar(){
-    LUsuarios.Agregar_lista(2715946369518,"a");
-    LUsuarios.Agregar_lista(2715946369518,"b");
-    LUsuarios.Graficar();
+    document.getElementById('LMO').innerHTML=MOrtogonal.ObtenerHTML();
+    document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
+    MOrtogonal.graficar();
+   
 
 }
 
+function Fsalir(){
+    document.getElementById('BMenu').style.display='none';
+    document.getElementById('cargaMasiva').style.display='none';
+    document.getElementById('Loginghtml').style.display='';
+
+}
 Bre.addEventListener('click',Registro,true);
 BTCM.addEventListener('click',graficar,true);
+BTsalir.addEventListener('click',Fsalir,true);
 
 
 

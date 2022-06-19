@@ -1,0 +1,473 @@
+
+.clear{
+	clear:both;
+	height:1px;
+}
+
+.inv{ display:none; }
+
+
+body {
+	line-height: 1;
+	color: #696969;
+	background: #f9f7e8  repeat-x top center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:  100%;
+}
+
+
+div#wrapper{
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+}
+
+h1{
+	font-size: 36px;
+	line-height: 1.5em;
+	color: #665d4e;
+}
+
+h2{
+	font-size: 32px;
+	line-height: 1.5em;
+	color: #665d4e;
+}
+
+h3{
+	font-size: 26px;
+	line-height: 1.5em;;
+	color: #665d4e;
+}
+
+h4{
+	font-size: 22px;
+	line-height: 1.5em;
+	color: #665d4e;
+}
+
+
+h5{
+	font-size: 18px;
+	line-height: 1.5em;
+	font-weight: bold;
+	color: #665d4e;
+}
+
+h6{
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #665d4e;
+}
+
+p.excerpt{
+	font-size: 32px;
+	line-height: 1.5em;;
+	color: #665d4e;
+	width: 960px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+p.excerpt a{
+	color: #3e372b;
+	text-decoration: none;
+}
+
+p.section-title{
+	display: block;
+	overflow: hidden;
+	color: #665d4e;
+	margin-bottom: 18px;
+}
+
+p.section-title span.title{
+	display: block;
+	float: left;
+	font-size: 36px;
+	padding-right: 15px;
+	margin-right: 15px;
+	border-right: 1px solid #665d4e;
+}
+
+
+p.section-title span.desc{
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 1.5em;
+	margin-top: 18px;
+}
+
+
+blockquote h4:first-letter{
+	font-size: 26px;
+}
+
+div.col blockquote p,
+blockquote p{
+	font-size: 14px;
+	font-style: italic;
+	font-family: Georgia;
+	color: #665d4e;
+	line-height: 1.5em;
+}
+
+
+.custom1 a{
+	text-decoration: none;
+}
+
+img.left-align{
+	float:left;
+	margin:8px 18px 18px 0;
+	display: block;
+}
+
+img.right-align{
+	float:right;
+	margin:0px 0px 0px 10px;
+	display: block;
+}
+
+img.boxed{
+	background: white;
+	padding: 5px;
+	border: 1px solid #606060;
+}
+
+.custom{
+	word-spacing: .3em;
+}
+
+
+
+/* HEADER ------------------------------------------------------------*/
+
+
+
+div#header img#logo{
+	position: absolute;
+	top:75px;
+	left: 0px;
+}
+
+/* ARROW ------------------------------------------------------------*/
+
+img#arrow{
+	position: relative;
+	top: 145px;
+}
+
+img.arrow-home{
+	display: none;
+}
+
+img.arrow-about{
+	left: 680px;
+}
+
+img.arrow-gallery{
+	left: 770px;
+}
+
+img.arrow-blog{
+	left: 843px;
+}
+
+img.arrow-contact{
+	left: 920px;
+}
+
+
+/* NAV ------------------------------------------------------------*/
+
+ul#nav{
+	display: block;
+	position: absolute;
+	top:120px;
+	right: 0px;
+	width: 500px;
+	z-index: 300;
+}
+
+ul#nav li{
+	display: block;
+	float: right;
+}
+
+ul#nav li a{
+	font-size: 16px;
+	text-decoration: none;
+	margin-left: 15px;
+	padding-right:15px;
+	border-right: 1px solid #665d4e;
+}
+
+ul#nav li.last a{
+	border-right: none 0px;
+	padding-right:0px;
+}
+
+ul#nav li ul li{
+	border: none;
+}
+
+ul#nav li ul{
+	display: block;
+	padding: 10px 5px;;
+	background: white;
+	border: 1px solid #665d4e;
+}
+
+ul#nav li ul li{
+	display: block;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #665d4e;
+}
+
+ul#nav li ul li:last-child{
+	border: none;
+}
+
+ul#nav li ul li a{
+	border: none;
+	font-size: 14px;
+}
+
+
+
+
+/* SEARCH ------------------------------------------------------------*/
+
+form#search{
+	position: absolute;
+	top: 20px;
+	right: -22px;
+	width: 250px;
+	height: 50px;
+}
+
+form#search input#keyword{
+	color: #b8b2a9;
+	font-size: 14px;
+	width: 144px;
+	height: 30px;
+	margin: 10px 0px 5px 30px;
+	padding: 0px 30px 0px 5px;
+	border: 0;
+
+}
+
+
+form#search input#go{
+	position: absolute; 
+	top: -2px;
+	right: 20px;
+	width: 49px;
+	height: 49px;
+	border: 0px;
+	
+}
+
+form#search input#go:hover{
+	background-position: 0px -49px;
+}
+
+/* MAIN ------------------------------------------------------------*/
+
+div#main{
+	width: 100%;
+	min-height: 650px;
+	position: relative;
+	overflow: hidden;
+}
+
+
+div.holder{
+	overflow: hidden;
+}
+
+div.holder div.block{
+	width: 307px;
+	float: left;
+	margin: 0px 18px 0px 0px;
+}
+
+
+div.holder div.last{
+	margin: 0px 0px 70px 0px;
+}
+
+
+div.holder div.block div.thumb-holder{
+	position: relative;
+	width: 307px;
+	height: 129px;
+	margin-bottom: 5px;
+}
+
+div.holder div.block img.thumb{
+	position: absolute;
+	top:2px;
+	left: 2px;
+}
+
+div.holder div.block h2{
+	line-height: 1em;
+	margin-bottom: 0px;
+	text-indent: 0px;
+	background: none transparent;
+}
+
+div.holder div.block h3{
+	line-height: 1em;
+	margin-bottom: 10px;
+}
+
+div.holder div.block p.thumb-text{
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #665d4e;
+	border-top: 2px solid #665d4e;
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+div.top-img{
+	width: 100%;
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+
+div.top-img img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+
+
+/* COLUMNS ------------------------------------------------------------*/
+
+div.one-col,
+div.two-col,
+div.three-col{
+	overflow: hidden;
+}
+
+div.separator{
+	border-bottom: 1px solid gray;
+	margin-bottom: 18px;
+}
+
+div.one-col div.col{
+	width: 100%;
+}
+
+div.two-col div.col{
+	width: 465px;
+	float: left;
+	margin-right: 30px;
+}
+
+div.two-col div.last{
+	margin-right: 0px;
+}
+
+div.three-col div.col{
+	width: 300px;
+	float: left;
+	margin-right: 30px;
+}
+
+div.three-col div.last{
+	margin-right: 0px;
+}
+
+div.col p{
+	font-size: 14px;
+	line-height: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+
+
+/* SLIDESHOW ------------------------------------------------------------*/
+
+div#slideshow{
+	overflow: hidden;
+	position: relative;
+	height: 380px;
+	margin-bottom: 5px;
+	width: 960px;
+}
+
+div#slideshow ul#slides{
+	margin: 0 auto;
+	width: 950px;
+	height: 337px;
+	position: absolute;
+	top:20px;
+	left: 5px;
+}
+
+div#slideshow-arrows{
+	margin: 0 auto;
+	z-index: 900;
+	width: 1000px;
+	height: 57px;
+}
+
+
+
+div#slideshow img#prev{
+	position: absolute;
+	top:180px;
+	left: 1px;
+	z-index: 20;
+}
+
+div#slideshow img#next{
+	position: absolute;
+	top: 180px;
+	right: 1px;
+	z-index: 21;
+}
+
+
+
+
+
+
+div.fade-slide{
+	overflow: hidden;
+	height: 345px;
+	border: 2px solid white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
