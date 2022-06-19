@@ -7,6 +7,7 @@
 .inv{ display:none; }
 
 
+
 body {
 	line-height: 1;
 	color: #696969;
@@ -296,6 +297,62 @@ div.holder div.block{
 	float: left;
 	margin: 0px 18px 0px 0px;
 }
+
+div.holder div.blocks{
+	width: 307px;
+	height: 680px;
+	float: left;
+	margin: 0px 18px 0px 0px;
+}
+
+
+
+
+div.holder div.blocks div.thumb-holder{
+	position: relative;
+	width: 307px;
+	height: 129px;
+	margin-bottom: 5px;
+}
+
+div.holder div.blocks img.thumb{
+	position: absolute;
+	top:2px;
+	left: 2px;
+}
+
+div.holder div.blocks h2{
+	line-height: 1em;
+	margin-bottom: 0px;
+	text-indent: 0px;
+	background: none transparent;
+}
+
+div.holder div.blocks h3{
+	line-height: 1em;
+	margin-bottom: 10px;
+}
+
+div.holder div.blocks p.thumb-text{
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #665d4e;
+	border-top: 2px solid #665d4e;
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 div.holder div.last{

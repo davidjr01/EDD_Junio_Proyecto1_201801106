@@ -1,15 +1,18 @@
 import{MatrizD} from './MatrizDispersa.js'
+import{MatrizO} from './MatrizOrtogonal.js'
 import{Arbolbb} from './Arbolbb.js'
 import { ListaCircular } from './ListaCircularSimple.js';
 import{ListaCCliente} from './ListaCClientes.js'
 var Bre=document.getElementById("botonRegistro");
 var BTCM=document.getElementById("BTCM");
 var BTsalir=document.getElementById("Salir");
+var BTCarga=document.getElementById("botCargaMasiva");       
+var BTVistas=document.getElementById("botVistas");    
 
 
 
 
-var MOrtogonal=new MatrizD();
+var MOrtogonal=new MatrizO();
 var MDispersa=new MatrizD();
 var Arbol=new Arbolbb();
 var LUsuarios=new ListaCircular();
@@ -32,13 +35,28 @@ function Registro(){
     var iUsuario=document.getElementById("Usuario").value;
     var ipass=document.getElementById("contraseña").value;
     var verific=LUsuarios.BuscarL(iUsuario,ipass);
+
     if(verific==true){
-        alert("Bienvenido " + iUsuario);
-        document.getElementById('BMenu').style.display='';
-        document.getElementById('cargaMasiva').style.display='';
-        document.getElementById("Usuario").value=""
-        document.getElementById("contraseña").value=""
-        document.getElementById('Loginghtml').style.display='none';
+        var rol=LUsuarios.BuscarRol(iUsuario);
+        if(rol=="Administrador"){
+            alert("Bienvenido " + iUsuario);
+            document.getElementById('BMenu').style.display='';
+            document.getElementById('cargaMasiva').style.display='';
+            document.getElementById('VistaAdmin').style.display='none';
+            document.getElementById("Usuario").value=""
+            document.getElementById("contraseña").value=""
+            document.getElementById('Loginghtml').style.display='none';
+            document.getElementById('ESMO').style.display='';
+            document.getElementById('ESMD').style.display='';
+            document.getElementById('divUs').style.display='';
+            document.getElementById('divUs2').style.display='';
+            document.getElementById('ESLU').style.display='';
+            document.getElementById('divAutor').style.display='';
+        }else{
+            alert("Bienvenido Cliente" + iUsuario);
+            document.getElementById("Usuario").value=""
+            document.getElementById("contraseña").value=""
+        }  
         
     }
     else{
@@ -50,9 +68,17 @@ function Registro(){
 }
 
 function graficar(){
+    document.getElementById('cargaMasiva').style.display='none';
+    document.getElementById('VistaAdmin').style.display='';
     document.getElementById('LMO').innerHTML=MOrtogonal.ObtenerHTML();
     document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
+    document.getElementById('LUS').innerHTML=LUsuarios.ObtenerHTML();
+    document.getElementById('Aautor').innerHTML=Arbol.ObtenerHTML();
     MOrtogonal.graficar();
+    MDispersa.graficar();
+    LUsuarios.Graficar();
+    Arbol.Graficar();
+
    
 
 }
@@ -61,11 +87,31 @@ function Fsalir(){
     document.getElementById('BMenu').style.display='none';
     document.getElementById('cargaMasiva').style.display='none';
     document.getElementById('Loginghtml').style.display='';
+    document.getElementById('ESMO').style.display='none';
+    document.getElementById('ESMD').style.display='none';
+    document.getElementById('divUs').style.display='none';
+    document.getElementById('divUs2').style.display='none';
+    document.getElementById('ESLU').style.display='none';
+    document.getElementById('divAutor').style.display='none';
+
+
+}
+function DivCarga(){
+    document.getElementById('cargaMasiva').style.display='';
+    document.getElementById('VistaAdmin').style.display='none';
+
+
+}
+function DivVista(){
+    document.getElementById('cargaMasiva').style.display='none';
+    document.getElementById('VistaAdmin').style.display='';
 
 }
 Bre.addEventListener('click',Registro,true);
 BTCM.addEventListener('click',graficar,true);
 BTsalir.addEventListener('click',Fsalir,true);
+BTCarga.addEventListener('click',DivCarga,true);
+BTVistas.addEventListener('click',DivVista,true);
 
 
 

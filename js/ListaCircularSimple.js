@@ -49,6 +49,35 @@ class ListaCircular{
             contador -= 1;
         }
     }
+
+    ObtenerHTML(){
+        var actual = this.cabeza;
+        var contador = this.tamaño;
+        var cont=0;
+        var datogeneral="";
+        var daux="";
+        var daux2="";
+        var daux3="";
+        while (contador!=0){
+            cont+=1;
+            daux=`<div class="block">
+            <div class="thumb-holder"> <img src="img/imagenU.png"  class="thumb" />  </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h2 class="customs">`+actual.nombre+"</h2>\n";
+            daux2="<h5 class=\"custom2\">Telefono:  "+actual.telefono+"</h5>";
+            daux3="<p class=\"thumb-text\"></p> \n </div> \n\n";
+            datogeneral+=daux+daux2+daux3;
+            
+            actual = actual.siguiente;
+            contador -= 1;
+        }
+        return datogeneral;
+    }
     
     BuscarL(usuario,contrasenia){
         var actual = this.cabeza;
@@ -59,6 +88,23 @@ class ListaCircular{
             cont+=1;
             if((usuario==actual.usuario)&&(contrasenia==actual.contrasenia)){
                 pase=true;
+                break;
+            }
+            actual = actual.siguiente;
+            contador -= 1;
+        }
+        return pase;
+    }
+
+    BuscarRol(usuario){
+        var actual = this.cabeza;
+        var contador = this.tamaño;
+        var cont=0;
+        var pase="";
+        while (contador!=0){
+            cont+=1;
+            if(usuario==actual.usuario){
+                pase=actual.rol;
                 break;
             }
             actual = actual.siguiente;
@@ -113,7 +159,11 @@ class ListaCircular{
         cGeneral+=nodos2;
         cGeneral+="\n}";
         
-        console.log(cGeneral);
+        //console.log(cGeneral);
+        d3.select("#ESLU").graphviz()
+                .width (1500)
+                .height(600)
+                .renderDot(cGeneral);
 
     }
 

@@ -1,8 +1,8 @@
 import{Nodo,nCabecera} from './Nodo.js'
 import { listaCabeceras } from './Cabecera.js'
-export  {MatrizD}
+export  {MatrizO}
 
-class MatrizD{
+class MatrizO{
     constructor(){
         this.CFilas=new listaCabeceras();
         this.CColumnas=new listaCabeceras();
@@ -152,7 +152,7 @@ class MatrizD{
                 if (actual.nombre_autor!=""){
                     //console.log(actual.nombre_autor);
                     daux=`<div class="block">
-                    <div class="thumb-holder"> <img src="img/libro3.png"  class="thumb" />  </div>
+                    <div class="thumb-holder"> <img src="img/libro2.jpg"  class="thumb" />  </div>
                     <br>
                     <br>
                     <br>
@@ -316,7 +316,7 @@ class MatrizD{
         //___________________________________________________
         resultado+="}";
         //console.log(resultado);
-        d3.select("#ESMD").graphviz()
+        d3.select("#ESMO").graphviz()
                 .width (1500)
                 .height(1000)
                 .renderDot(resultado);
