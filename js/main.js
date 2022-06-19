@@ -1,10 +1,16 @@
 import{MatrizD} from './MatrizDispersa.js'
 import{Arbolbb} from './Arbolbb.js'
+import { ListaCircular } from './ListaCircularSimple.js';
+import{ListaCCliente} from './ListaCClientes.js'
 var Bre=document.getElementById("botonRegistro");
 var BTCM=document.getElementById("BTCM");
 var MOrtogonal=new MatrizD();
 var MDispersa=new MatrizD();
 var Arbol=new Arbolbb();
+var LUsuarios=new ListaCircular();
+
+let lsta=new ListaCCliente();
+LUsuarios.append(2354168452525,"WIlfred Perez","Wilfred","","Administrador","123","+502 (123) 123-4567",lsta);
 
 
 
@@ -29,7 +35,9 @@ function Registro(){
 }
 
 function graficar(){
-    Arbol.Graficar();
+    LUsuarios.Agregar_lista(2715946369518,"a");
+    LUsuarios.Agregar_lista(2715946369518,"b");
+    LUsuarios.Graficar();
 
 }
 
@@ -112,7 +120,8 @@ function CargarUsuarios(e) {
 
         for (const key in object) {
             let CUsuarios = object[key];
-            console.log(CUsuarios.dpi,CUsuarios.nombre_completo,CUsuarios.nombre_usuario,CUsuarios.correo,CUsuarios.rol,CUsuarios.contrasenia,CUsuarios.telefono);
+            let listaa=new ListaCCliente();
+            LUsuarios.append(CUsuarios.dpi,CUsuarios.nombre_completo,CUsuarios.nombre_usuario,CUsuarios.correo,CUsuarios.rol,CUsuarios.contrasenia,CUsuarios.telefono,listaa);
         }
         
     }

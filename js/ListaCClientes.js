@@ -1,26 +1,16 @@
+export{ListaCCliente}
 class Nodo{
     constructor(valor){
         this.valor=valor;
         this.siguiente=null;
     }
 }
-class ListaSimple{
+class ListaCCliente{
     constructor(){
         this.cabeza=null;
         this.tamaño=0;
     }
-    preagregar(valor){
-        var Nnodo =new Nodo(valor);
-        if (this.cabeza==null){
-            this.cabeza==Nnodo;
-        }
-        else{
-            nNodo.siguiente=this.cabeza;
-            this.cabeza=nNodo;
-
-        }
-        this.tamaño+=1;
-    }
+    
     agregar(valor){
         var Nnodo=new Nodo(valor);
         if (this.cabeza==null){
@@ -58,7 +48,7 @@ class ListaSimple{
     
     Mostrar(){
         if(this.cabeza == null){
-            console.log("La lista se encuentra vacia");
+            
         }
         else{
             var  Naux =this.cabeza;
@@ -69,6 +59,33 @@ class ListaSimple{
             }
         }
     }
+
+    graficar2(id,ref){
+        var contenido="";
+        var cNodos="";
+        var Cconecciones=ref+"->";
+        if(this.cabeza == null){
+            
+        }
+        else{
+            var  Naux =this.cabeza;
+            let c=0;
+            let cont=0;
+            while(Naux != null){
+                cont+=1;
+                cNodos+="Nodo"+id+cont+'[label="'+Naux.valor+'"]\n';
+                if(Naux.siguiente!=null){
+                    Cconecciones+="Nodo"+id+cont+"->";
+                }else{
+                    Cconecciones+="Nodo"+id+cont;
+                }
+                Naux = Naux.siguiente;
+            }
+            contenido+="\n"+cNodos+Cconecciones+"\n";
+        }
+            return contenido;
+    }
+    
 
     graficar(){
         var cGeneral=`digraph G {
