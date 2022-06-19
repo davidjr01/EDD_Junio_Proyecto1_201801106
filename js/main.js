@@ -6,8 +6,18 @@ import{ListaCCliente} from './ListaCClientes.js'
 var Bre=document.getElementById("botonRegistro");
 var BTCM=document.getElementById("BTCM");
 var BTsalir=document.getElementById("Salir");
+var BTsalir2=document.getElementById("Salir2");
 var BTCarga=document.getElementById("botCargaMasiva");       
 var BTVistas=document.getElementById("botVistas");    
+var BTCompraL=document.getElementById("BTCISBN");  
+var BTCompraL2=document.getElementById("BTCPL");  
+
+var ContUsuario="";
+var isbnLibroMO="";
+var isbnLibroMD="";
+var cantidadLMO="";
+var cantidadLMD="";
+
 
 
 
@@ -19,7 +29,7 @@ var LUsuarios=new ListaCircular();
 
 let lsta=new ListaCCliente();
 LUsuarios.append(2354168452525,"WIlfred Perez","Wilfred","","Administrador","123","+502 (123) 123-4567",lsta);
-
+LUsuarios.append("","david","a","","Usuario","123","+502 (123) 123-4567",lsta);
 
 
 for (let i=1;i<=25;i++){
@@ -40,6 +50,7 @@ function Registro(){
         var rol=LUsuarios.BuscarRol(iUsuario);
         if(rol=="Administrador"){
             alert("Bienvenido " + iUsuario);
+            ContUsuario=iUsuario;
             document.getElementById('BMenu').style.display='';
             document.getElementById('cargaMasiva').style.display='';
             document.getElementById('VistaAdmin').style.display='none';
@@ -52,10 +63,22 @@ function Registro(){
             document.getElementById('divUs2').style.display='';
             document.getElementById('ESLU').style.display='';
             document.getElementById('divAutor').style.display='';
+            document.getElementById('DivFondo').style.display='none';
         }else{
             alert("Bienvenido Cliente" + iUsuario);
-            document.getElementById("Usuario").value=""
-            document.getElementById("contraseña").value=""
+            ContUsuario=iUsuario;
+            document.getElementById("Usuario").value="";
+            document.getElementById("contraseña").value="";
+            document.getElementById('DivFondo').style.display='none';
+            document.getElementById('Loginghtml').style.display='none';
+            document.getElementById('BMenu2').style.display='';
+            document.getElementById('LMO').innerHTML=MOrtogonal.ObtenerHTML();
+            document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
+            document.getElementById('VistaAdmin').style.display='';
+            document.getElementById('ComprarT').style.display='';
+            document.getElementById('divUs').style.display='none';
+    document.getElementById('divUs2').style.display='none';
+            
         }  
         
     }
@@ -64,6 +87,54 @@ function Registro(){
         document.getElementById("Usuario").value=""
         document.getElementById("contraseña").value=""
     }
+    
+}
+
+function DivCompraL(){
+    var texisb=document.getElementById("Cisbn").value;
+    isbnLibroMO=texisb;
+    var cantidad=MOrtogonal.ObtenerCantidad(texisb);
+    cantidadLMO=cantidad;
+    document.getElementById('LBMO').innerHTML=MOrtogonal.ObtenerHTMLCompra(texisb);
+    var Graf=`digraph G {
+        node[shape = box,fillcolor="white" color="black" style="filled"];
+        graph [pad="0.5", nodesep="0.03"];
+        edge[style = "bold"];
+   
+   rankdir="LR";
+   subgraph cluster_1 { \n`;
+    var nodos="";
+    for(let i=1;i<=cantidad;i++){
+        nodos+="a"+i+" [label= \" \"]; ";
+    }
+    Graf+=nodos+"}\n "+ "label=\"Ejemplares\"; " + "\n}";
+    d3.select("#pila").graphviz()
+                .width (300)
+                .height(500)
+                .renderDot(Graf);
+    
+    document.getElementById('divComp').style.display='';
+
+    
+
+
+}
+
+function DivCompraL2(){
+    var texval=document.getElementById("textCantidad").value;
+    if((cantidadLMO>texval)||((cantidadLMO==texval))){
+        MOrtogonal.Comprar(isbnLibroMO,(cantidadLMO-texval));
+
+    }else if(cantidadLMO<texval){
+
+    }
+    var nom=MOrtogonal.ObtenerNombre(isbnLibroMO);
+    for(let i=1;i<=texval;i++){
+        LUsuarios.Agregar_lista(ContUsuario,nom)
+    }
+   
+    document.getElementById('LMO').innerHTML=MOrtogonal.ObtenerHTML();
+    DivCompraL();
     
 }
 
@@ -94,8 +165,23 @@ function Fsalir(){
     document.getElementById('ESLU').style.display='none';
     document.getElementById('divAutor').style.display='none';
 
+}
+
+function Fsalir2(){
+    document.getElementById('BMenu').style.display='none';
+    document.getElementById('cargaMasiva').style.display='none';
+    document.getElementById('Loginghtml').style.display='';
+    document.getElementById('ESMO').style.display='none';
+    document.getElementById('ESMD').style.display='none';
+    document.getElementById('divUs').style.display='none';
+    document.getElementById('divUs2').style.display='none';
+    document.getElementById('ESLU').style.display='none';
+    document.getElementById('divAutor').style.display='none';
+    document.getElementById('ComprarT').style.display='none';
+
 
 }
+
 function DivCarga(){
     document.getElementById('cargaMasiva').style.display='';
     document.getElementById('VistaAdmin').style.display='none';
@@ -110,8 +196,11 @@ function DivVista(){
 Bre.addEventListener('click',Registro,true);
 BTCM.addEventListener('click',graficar,true);
 BTsalir.addEventListener('click',Fsalir,true);
+BTsalir2.addEventListener('click',Fsalir2,true);
 BTCarga.addEventListener('click',DivCarga,true);
 BTVistas.addEventListener('click',DivVista,true);
+BTCompraL.addEventListener('click',DivCompraL,true);
+BTCompraL2.addEventListener('click',DivCompraL2,true);
 
 
 

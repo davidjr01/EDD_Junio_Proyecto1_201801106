@@ -73,11 +73,11 @@ class ListaCCliente{
             let cont=0;
             while(Naux != null){
                 cont+=1;
-                cNodos+="Nodo"+id+cont+'[label="'+Naux.valor+'"]\n';
+                cNodos+="Nodos"+id+cont+'[label="'+Naux.valor+'"]\n';
                 if(Naux.siguiente!=null){
-                    Cconecciones+="Nodo"+id+cont+"->";
+                    Cconecciones+="Nodos"+id+cont+"->";
                 }else{
-                    Cconecciones+="Nodo"+id+cont;
+                    Cconecciones+="Nodos"+id+cont;
                 }
                 Naux = Naux.siguiente;
             }
@@ -101,11 +101,11 @@ class ListaCCliente{
             let c=0;
             while(Nactual != null){
                 cont+=1;
-                cNodos+="Nodo"+cont+'[label="'+Nactual.valor+'"]\n';
+                cNodos+="Nodos"+cont+'[label="'+Nactual.valor+'"]\n';
                 if(Nactual.siguiente!=null){
-                    Cconecciones+="Nodo"+cont+"->";
+                    Cconecciones+="Nodos"+cont+"->";
                 }else{
-                    Cconecciones+="Nodo"+cont;
+                    Cconecciones+="Nodos"+cont;
                 }
                 Nactual = Nactual.siguiente;
             }

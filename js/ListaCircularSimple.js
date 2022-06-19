@@ -113,11 +113,11 @@ class ListaCircular{
         return pase;
     }
 
-    Agregar_lista(dpi,valor){
+    Agregar_lista(usuario,valor){
         var actual = this.cabeza;
         var contador = this.tamaño;
         while (contador!=0){
-            if(actual.dpi==dpi){
+            if(actual.usuario==usuario){
                 actual.lista.agregar(valor);
                 break;
             }
@@ -159,7 +159,7 @@ class ListaCircular{
         cGeneral+=nodos2;
         cGeneral+="\n}";
         
-        //console.log(cGeneral);
+        console.log(cGeneral);
         d3.select("#ESLU").graphviz()
                 .width (1500)
                 .height(600)

@@ -45,6 +45,12 @@ body {font-size:16px;}
     <a  id="botVistas" class="w3-bar-item w3-button w3-hover-white">Vistas</a> 
     <a  id="Salir" class="w3-bar-item w3-button w3-hover-white">Salir</a>
   </div>
+
+  <div class="w3-bar-block" id="BMenu2" style="display: none" >
+    <a  id="botCargaMasiva" class="w3-bar-item w3-button w3-hover-white">Comprar Libros</a> 
+    <a  id="botVistas" class="w3-bar-item w3-button w3-hover-white">Ver Autores</a> 
+    <a  id="Salir2" class="w3-bar-item w3-button w3-hover-white">Salir</a>
+  </div>
 </nav>
 
 
@@ -80,6 +86,22 @@ body {font-size:16px;}
 </div>
 </div>
 
+  <div id="DivFondo"><!--div fondo home -->
+    <div class="w3-container" id="services" style="margin-left:310px;margin-right:40px">
+      <div class="containers" >
+      <br>
+      <br>
+      <img src="img/FONDO.png" style="margin-left: 80px;">
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+    </div>
+
+  </div><!--div fondo home -->
+
+
   <div class="w3-container w3-center " id="Vistas" style="margin-left:390px;margin-right:90px"><!--div margen -->
       <br>
       <div id="VistaAdmin" style="display: none"><!--div que hace desaparecer -->
@@ -95,6 +117,51 @@ body {font-size:16px;}
       </div><!--div containers -->
       <br>
       <br>
+
+      <div class="containers" id="ComprarT" style="display: none" ><!--div containersr comprar libro -->
+        <h1 class="w3-padding-10"><b>Consulta/Compra de Libros</b></h1>
+        <div class="holder" style ="margin-left:110px; margin-top:50px;">
+           Ingrese Isbn :
+          <input type="text" id="Cisbn">
+          <br>
+          <br>
+           
+          <button id="BTCISBN">Verificar</button>
+          <br>
+          <br>
+          <div id="divComp" style="display: none;">
+    
+            <div class="holder" style ="margin-left:110px; margin-top:50px;">
+
+              <ul id="LBMO">        
+              </ul>
+              <div id="pila">
+
+              </div>  
+          
+              </div><!-- ENDS holder -->
+
+
+
+          Ingrese cantidad a comprar :
+          <input type="text" id="textCantidad">
+          <br>
+          <br>
+           
+          <button id="BTCPL">Comprar</button>
+          </div>
+          
+
+
+          
+        </div><!-- ENDS holder -->
+        <br>
+        <br>
+      </div><!--div containersr comprar libro-->
+      <br>
+      <br>
+
+
       <div class="containers" id="ESMO" ><!--div containersr matriz en graphiz -->
         
       </div><!--div containers -->
@@ -171,7 +238,7 @@ body {font-size:16px;}
 
 
   <div class="w3-container" id="services" style="margin-left:340px;margin-right:40px">
-    
+   
     
   </div>
   

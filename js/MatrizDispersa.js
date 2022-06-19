@@ -143,6 +143,8 @@ class MatrizD{
         var daux="";
         var daux2="";
         var daux3="";
+        var daux4="";
+        var daux5="";
         let CFila = this.CFilas.primero;
         while (CFila != null){
             let actual=new Nodo();
@@ -157,9 +159,11 @@ class MatrizD{
                     <br>
                     <br>
                     <h2 class="customs">`+actual.nombre_libro+"</h2>\n"
-                    daux2="<h5 class=\"custom2\">Autor : "+actual.nombre_autor+"</h5>";
-                    daux3="<p class=\"thumb-text\"></p> \n </div> \n\n";
-                    datogeneral+=daux+daux2+daux3;
+                    daux2="<h5 class=\"custom2\">Isbn : "+actual.isbn+"</h5>";
+                    daux3="<h5 class=\"custom2\">Autor : "+actual.nombre_autor+"</h5>";
+                    daux4="<h5 class=\"custom2\">Cantidad : "+actual.cantidad+"</h5>";
+                    daux5="<p class=\"thumb-text\"></p> \n </div> \n\n";
+                    datogeneral+=daux+daux2+daux3+daux4+daux5;
                 }
                 
                    
