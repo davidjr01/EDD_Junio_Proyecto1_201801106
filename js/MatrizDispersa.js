@@ -138,6 +138,73 @@ class MatrizD{
         }
     }
 
+
+    Comprar(isbn,cantidad){
+        let CFila = this.CFilas.primero;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                if (actual.nombre_autor!=""){
+                    if(actual.isbn==isbn){
+                        actual.cantidad=cantidad;
+                        break;
+                    }
+                    console.log(actual.nombre_libro);
+
+                }
+                   
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+    }
+
+    ObtenerCantidad(isbn){
+        let CFila = this.CFilas.primero;
+        var cantidad;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                if (actual.nombre_autor!=""){
+                    
+                    if(actual.isbn==isbn){
+                        cantidad=actual.cantidad;
+                    }
+                }
+                   
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+        return cantidad;
+    }
+    ObtenerNombre(isbn){
+        let CFila = this.CFilas.primero;
+        var cantidad;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                if (actual.nombre_autor!=""){
+                     
+                    if(actual.isbn==isbn){
+                        cantidad=actual.nombre_libro;
+                    }
+                }
+                   
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+        return cantidad;
+    }
+
+
     ObtenerHTML(){
         var datogeneral="";
         var daux="";
@@ -164,6 +231,44 @@ class MatrizD{
                     daux4="<h5 class=\"custom2\">Cantidad : "+actual.cantidad+"</h5>";
                     daux5="<p class=\"thumb-text\"></p> \n </div> \n\n";
                     datogeneral+=daux+daux2+daux3+daux4+daux5;
+                }
+                
+                   
+                actual = actual.derecha;
+            }
+            CFila = CFila.siguiente;
+        }
+        return datogeneral;
+    }
+
+    ObtenerHTMLCompra(isbn){
+        var datogeneral="";
+        var daux="";
+        var daux2="";
+        var daux3="";
+        var daux4="";
+        var daux5="";
+        let CFila = this.CFilas.primero;
+        while (CFila != null){
+            let actual=new Nodo();
+            actual = CFila.accesoNodo;
+            let f=actual.fila;
+            while (actual != null){
+                if (actual.nombre_autor!=""){
+                     if(actual.isbn==isbn){
+                        daux=`<div class="block">
+                        <div class="thumb-holder"> <img src="img/libro2.jpg"  class="thumb" />  </div>
+                        <br>
+                        <br>
+                        <br>
+                        <h2 class="customs">`+actual.nombre_libro+"</h2>\n"
+                        daux2="<h5 class=\"custom2\">Isbn : "+actual.isbn+"</h5>";
+                        daux3="<h5 class=\"custom2\">Autor : "+actual.nombre_autor+"</h5>";
+                        daux4="<h5 class=\"custom2\">Cantidad : "+actual.cantidad+"</h5>";
+                        daux5="<p class=\"thumb-text\"></p> \n </div> \n\n";
+                        datogeneral+=daux+daux2+daux3+daux4+daux5;
+                     }
+                        
                 }
                 
                    

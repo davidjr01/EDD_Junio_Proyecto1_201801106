@@ -44,7 +44,8 @@ class ListaCircular{
         var cont=0;
         while (contador!=0){
             cont+=1;
-            console.log(actual.nombre);
+            console.log("usuario "+actual.usuario + "   lista:");
+            actual.lista.Mostrar();
             actual = actual.siguiente;
             contador -= 1;
         }

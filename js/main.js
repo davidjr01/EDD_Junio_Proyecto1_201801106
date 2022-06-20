@@ -12,6 +12,9 @@ var BTVistas=document.getElementById("botVistas");
 var BTCompraL=document.getElementById("BTCISBN");  
 var BTCompraL2=document.getElementById("BTCPL");  
 
+var BTCompraLL=document.getElementById("BTCISBN2");  
+var BTCompraLL2=document.getElementById("BTCPL2");  
+
 var ContUsuario="";
 var isbnLibroMO="";
 var isbnLibroMD="";
@@ -29,7 +32,7 @@ var LUsuarios=new ListaCircular();
 
 let lsta=new ListaCCliente();
 LUsuarios.append(2354168452525,"WIlfred Perez","Wilfred","","Administrador","123","+502 (123) 123-4567",lsta);
-LUsuarios.append("","david","a","","Usuario","123","+502 (123) 123-4567",lsta);
+LUsuarios.append(2354168452525,"WIlfred Perez","a","","Usuario","a","+502 (123) 123-4567",lsta);
 
 
 for (let i=1;i<=25;i++){
@@ -64,6 +67,10 @@ function Registro(){
             document.getElementById('ESLU').style.display='';
             document.getElementById('divAutor').style.display='';
             document.getElementById('DivFondo').style.display='none';
+            document.getElementById('divComp').style.display='none';
+            document.getElementById('divComp2').style.display='none';
+            document.getElementById('ComprarT').style.display='none';
+            document.getElementById('ComprarT2').style.display='none';
         }else{
             alert("Bienvenido Cliente" + iUsuario);
             ContUsuario=iUsuario;
@@ -76,8 +83,17 @@ function Registro(){
             document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
             document.getElementById('VistaAdmin').style.display='';
             document.getElementById('ComprarT').style.display='';
+            document.getElementById('ComprarT2').style.display='';
             document.getElementById('divUs').style.display='none';
-    document.getElementById('divUs2').style.display='none';
+            document.getElementById('divUs2').style.display='none';
+            document.getElementById("Cisbn").value="";
+            document.getElementById("Cisbn2").value="";
+            document.getElementById('divComp').style.display='none';
+            document.getElementById('divComp2').style.display='none';
+            document.getElementById('LBMO').innerHTML="";
+            document.getElementById('LBMD').innerHTML="";
+            document.getElementById('BMenu').style.display='none';
+
             
         }  
         
@@ -120,6 +136,7 @@ function DivCompraL(){
 
 }
 
+
 function DivCompraL2(){
     var texval=document.getElementById("textCantidad").value;
     if((cantidadLMO>texval)||((cantidadLMO==texval))){
@@ -130,11 +147,65 @@ function DivCompraL2(){
     }
     var nom=MOrtogonal.ObtenerNombre(isbnLibroMO);
     for(let i=1;i<=texval;i++){
-        LUsuarios.Agregar_lista(ContUsuario,nom)
+        LUsuarios.Agregar_lista(ContUsuario,nom);
     }
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
+    LUsuarios.Mostrar();
+    LUsuarios.Graficar();
+
    
     document.getElementById('LMO').innerHTML=MOrtogonal.ObtenerHTML();
     DivCompraL();
+    
+}
+
+
+function DivCompraLL(){
+    var texisb=document.getElementById("Cisbn2").value;
+    isbnLibroMD=texisb;
+    var cantidad=MDispersa.ObtenerCantidad(texisb);
+    cantidadLMD=cantidad;
+    document.getElementById('LBMD').innerHTML=MDispersa.ObtenerHTMLCompra(texisb);
+    var Graf=`digraph G {
+        node[shape = box,fillcolor="white" color="black" style="filled"];
+        graph [pad="0.5", nodesep="0.03"];
+        edge[style = "bold"];
+   
+   rankdir="LR";
+   subgraph cluster_1 { \n`;
+    var nodos="";
+    for(let i=1;i<=cantidad;i++){
+        nodos+="a"+i+" [label= \" \"]; ";
+    }
+    Graf+=nodos+"}\n "+ "label=\"Ejemplares\"; " + "\n}";
+    d3.select("#pila2").graphviz()
+                .width (300)
+                .height(500)
+                .renderDot(Graf);
+    
+    document.getElementById('divComp2').style.display='';
+
+}
+
+function DivCompraLL2(){
+    var texval=document.getElementById("textCantidad2").value;
+    if((cantidadLMD>texval)||((cantidadLMD==texval))){
+        MDispersa.Comprar(isbnLibroMD,(cantidadLMD-texval));
+
+    }else if(cantidadLMD<texval){
+
+    }
+    var nom=MDispersa.ObtenerNombre(isbnLibroMD);
+    for(let i=1;i<=texval;i++){
+        LUsuarios.Agregar_lista(ContUsuario,nom);
+    }
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
+    LUsuarios.Mostrar();
+    LUsuarios.Graficar();
+
+   
+    document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
+    DivCompraLL();
     
 }
 
@@ -145,6 +216,7 @@ function graficar(){
     document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
     document.getElementById('LUS').innerHTML=LUsuarios.ObtenerHTML();
     document.getElementById('Aautor').innerHTML=Arbol.ObtenerHTML();
+    document.getElementById('EAR').style.display='';
     MOrtogonal.graficar();
     MDispersa.graficar();
     LUsuarios.Graficar();
@@ -163,12 +235,17 @@ function Fsalir(){
     document.getElementById('divUs').style.display='none';
     document.getElementById('divUs2').style.display='none';
     document.getElementById('ESLU').style.display='none';
-    document.getElementById('divAutor').style.display='none';
+    document.getElementById('divAutor').style.display='';
+    document.getElementById('EAR').style.display='none';
+    document.getElementById('ComprarT2').style.display='none';
+    
 
 }
 
 function Fsalir2(){
+    document.getElementById('ComprarT2').style.display='none';
     document.getElementById('BMenu').style.display='none';
+    document.getElementById('BMenu2').style.display='none';
     document.getElementById('cargaMasiva').style.display='none';
     document.getElementById('Loginghtml').style.display='';
     document.getElementById('ESMO').style.display='none';
@@ -176,21 +253,33 @@ function Fsalir2(){
     document.getElementById('divUs').style.display='none';
     document.getElementById('divUs2').style.display='none';
     document.getElementById('ESLU').style.display='none';
-    document.getElementById('divAutor').style.display='none';
+    document.getElementById('divAutor').style.display='';
     document.getElementById('ComprarT').style.display='none';
-
+    document.getElementById('divAutor2').style.display='none';
+    document.getElementById('divComp').style.display='none';
+    document.getElementById('divComp2').style.display='none';
+   
 
 }
 
 function DivCarga(){
     document.getElementById('cargaMasiva').style.display='';
     document.getElementById('VistaAdmin').style.display='none';
+    document.getElementById('LMD').innerHTML=MDispersa.ObtenerHTML();
+    document.getElementById('LUS').innerHTML=LUsuarios.ObtenerHTML();
+    document.getElementById('Aautor').innerHTML=Arbol.ObtenerHTML();
+    document.getElementById('EAR').style.display='';
+    MOrtogonal.graficar();
+    MDispersa.graficar();
+    LUsuarios.Graficar();
+    Arbol.Graficar();
 
 
 }
 function DivVista(){
     document.getElementById('cargaMasiva').style.display='none';
     document.getElementById('VistaAdmin').style.display='';
+    document.getElementById('EAR').style.display='';
 
 }
 Bre.addEventListener('click',Registro,true);
@@ -200,7 +289,9 @@ BTsalir2.addEventListener('click',Fsalir2,true);
 BTCarga.addEventListener('click',DivCarga,true);
 BTVistas.addEventListener('click',DivVista,true);
 BTCompraL.addEventListener('click',DivCompraL,true);
+BTCompraLL.addEventListener('click',DivCompraLL,true);
 BTCompraL2.addEventListener('click',DivCompraL2,true);
+BTCompraLL2.addEventListener('click',DivCompraLL2,true);
 
 
 
