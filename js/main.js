@@ -3,6 +3,7 @@ import{MatrizO} from './MatrizOrtogonal.js'
 import{Arbolbb} from './Arbolbb.js'
 import { ListaCircular } from './ListaCircularSimple.js';
 import{ListaCCliente} from './ListaCClientes.js'
+var BTLOGIN=document.getElementById("BTLogin");
 var Bre=document.getElementById("botonRegistro");
 var BTCM=document.getElementById("BTCM");
 var BTsalir=document.getElementById("Salir");
@@ -11,8 +12,7 @@ var BTCarga=document.getElementById("botCargaMasiva");
 var BTVistas=document.getElementById("botVistas");    
 var BTCompraL=document.getElementById("BTCISBN");  
 var BTCompraL2=document.getElementById("BTCPL");  
-var BTLOGIN=document.getElementById("BTLogin"); 
-
+ 
 var BTCompraLL=document.getElementById("BTCISBN2");  
 var BTCompraLL2=document.getElementById("BTCPL2");  
 
@@ -283,7 +283,7 @@ function DivVista(){
     document.getElementById('EAR').style.display='';
 
 }
-function BBLOGIN(){
+function bblogin(){
     document.getElementById('Loginghtml').style.display='';
     document.getElementById('HOME').style.display='none';
     document.getElementById('BTLogin').style.display='none';
@@ -300,7 +300,7 @@ BTCompraL.addEventListener('click',DivCompraL,true);
 BTCompraLL.addEventListener('click',DivCompraLL,true);
 BTCompraL2.addEventListener('click',DivCompraL2,true);
 BTCompraLL2.addEventListener('click',DivCompraLL2,true);
-BTLOGIN.addEventListener('click',BBLOGIN,true);
+BTLOGIN.addEventListener('click',bblogin,true);
 
 
 
