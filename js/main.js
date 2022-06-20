@@ -11,6 +11,7 @@ var BTCarga=document.getElementById("botCargaMasiva");
 var BTVistas=document.getElementById("botVistas");    
 var BTCompraL=document.getElementById("BTCISBN");  
 var BTCompraL2=document.getElementById("BTCPL");  
+var BTLOGIN=document.getElementById("BTLogin"); 
 
 var BTCompraLL=document.getElementById("BTCISBN2");  
 var BTCompraLL2=document.getElementById("BTCPL2");  
@@ -32,7 +33,7 @@ var LUsuarios=new ListaCircular();
 
 let lsta=new ListaCCliente();
 LUsuarios.append(2354168452525,"WIlfred Perez","Wilfred","","Administrador","123","+502 (123) 123-4567",lsta);
-LUsuarios.append(2354168452525,"WIlfred Perez","a","","Usuario","a","+502 (123) 123-4567",lsta);
+
 
 
 for (let i=1;i<=25;i++){
@@ -52,7 +53,7 @@ function Registro(){
     if(verific==true){
         var rol=LUsuarios.BuscarRol(iUsuario);
         if(rol=="Administrador"){
-            alert("Bienvenido " + iUsuario);
+            alert("Bienvenido  " + iUsuario);
             ContUsuario=iUsuario;
             document.getElementById('BMenu').style.display='';
             document.getElementById('cargaMasiva').style.display='';
@@ -72,7 +73,7 @@ function Registro(){
             document.getElementById('ComprarT').style.display='none';
             document.getElementById('ComprarT2').style.display='none';
         }else{
-            alert("Bienvenido Cliente" + iUsuario);
+            alert("Bienvenido   " + iUsuario);
             ContUsuario=iUsuario;
             document.getElementById("Usuario").value="";
             document.getElementById("contraseña").value="";
@@ -282,6 +283,13 @@ function DivVista(){
     document.getElementById('EAR').style.display='';
 
 }
+function BBLOGIN(){
+    document.getElementById('Loginghtml').style.display='';
+    document.getElementById('HOME').style.display='none';
+    document.getElementById('BTLogin').style.display='none';
+
+}
+
 Bre.addEventListener('click',Registro,true);
 BTCM.addEventListener('click',graficar,true);
 BTsalir.addEventListener('click',Fsalir,true);
@@ -292,6 +300,7 @@ BTCompraL.addEventListener('click',DivCompraL,true);
 BTCompraLL.addEventListener('click',DivCompraLL,true);
 BTCompraL2.addEventListener('click',DivCompraL2,true);
 BTCompraLL2.addEventListener('click',DivCompraLL2,true);
+BTLOGIN.addEventListener('click',BBLOGIN,true);
 
 
 
