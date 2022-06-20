@@ -2,7 +2,7 @@ export{ListaCircular}
 import{ListaCCliente} from './ListaCClientes.js'
 
 class Nodo{
-    constructor(dpi,nombre,usuario,correo,rol,contrasenia,telefono,lista){
+    constructor(dpi,nombre,usuario,correo,rol,contrasenia,telefono,lista,compras){
         this.dpi = dpi;
         this.nombre=nombre;
         this.usuario=usuario;
@@ -12,6 +12,7 @@ class Nodo{
         this.telefono=telefono;
         this.siguiente = null;
         this.lista=lista;
+        this.compras=compras;
     }
 
 }
@@ -24,8 +25,8 @@ class ListaCircular{
         this.lista=new ListaCCliente();
 
     }
-    append( dpi,nombre,usuario,correo,rol,contrasenia,telefono,lista){
-        var Nnodo = new Nodo(dpi,nombre,usuario,correo,rol,contrasenia,telefono,lista);
+    append( dpi,nombre,usuario,correo,rol,contrasenia,telefono,lista,compras){
+        var Nnodo = new Nodo(dpi,nombre,usuario,correo,rol,contrasenia,telefono,lista,compras);
         if ((this.cabeza == null) && (this.cola == null)){
             this.cabeza = Nnodo;
             this.cola = Nnodo;
@@ -49,6 +50,81 @@ class ListaCircular{
             actual = actual.siguiente;
             contador -= 1;
         }
+    }
+
+    MostrarTop(){
+        var actual = this.cabeza;
+        var contador = this.tamaño;
+        var cont=0;
+        while (contador!=0){
+            cont+=1;
+            console.log(" Nombre "+actual.nombre + " Compras: " + actual.compras);
+            actual = actual.siguiente;
+            contador -= 1;
+        }
+    }
+
+    devCompras(admin){
+        var actual = this.cabeza;
+        var contador = this.tamaño;
+        var cont=0;
+        var valors=0;
+        while (contador!=0){
+            cont+=1;
+            if(actual.admin==admin){
+                valors=actual.compras;
+                break;
+            }
+            actual = actual.siguiente;
+            contador -= 1;
+        }
+        return valors;
+
+    }
+
+
+    ordenarBurbuja(){
+        var aux = this.cabeza;
+        while (aux.siguiente!=null){
+            var aux2=aux.siguiente;
+            while(aux2.siguiente!=null){
+                
+                if (aux2.compras<aux.compras){
+
+                    tempn=aux.nombre;
+                    aux.nombre=aux2.nombre;
+                    aux2.nombre=tempn;
+
+                    temp=aux.compras;
+                    aux.compras=aux2.compras;
+                    aux2.compras=temp
+
+                    tempt=aux.telefono;
+                    aux.telefono=aux2.telefono;
+                    aux2.telefono=tempt;
+                }
+
+                aux2=aux2.nodo_siguiente;
+            }
+            aux=aux.nodo_siguiente;
+        }
+    }
+
+
+    acCompras(admin,dato){
+        var actual = this.cabeza;
+        var contador = this.tamaño;
+        var cont=0;
+        while (contador!=0){
+            cont+=1;
+            if(actual.admin==admin){
+                actual.compras=dato;
+                break;
+            }
+            actual = actual.siguiente;
+            contador -= 1;
+        }
+
     }
 
     ObtenerHTML(){
@@ -156,7 +232,7 @@ class ListaCircular{
 
             
         }
-        cGeneral+=cNodos+"\n{rank = same;\n"+cConecciones+"\n}";
+        cGeneral+=cNodos+"edge[ dir=\"both\"]; "+"\n{rank = same;\n"+cConecciones+"\n}\n edge[dir=\"forward\"]; \n";
         cGeneral+=nodos2;
         cGeneral+="\n}";
         

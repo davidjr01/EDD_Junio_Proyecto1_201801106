@@ -12,6 +12,7 @@ var BTCarga=document.getElementById("botCargaMasiva");
 var BTVistas=document.getElementById("botVistas");    
 var BTCompraL=document.getElementById("BTCISBN");  
 var BTCompraL2=document.getElementById("BTCPL");  
+var Top5=document.getElementById("Top5");  
  
 var BTCompraLL=document.getElementById("BTCISBN2");  
 var BTCompraLL2=document.getElementById("BTCPL2");  
@@ -32,7 +33,7 @@ var Arbol=new Arbolbb();
 var LUsuarios=new ListaCircular();
 
 let lsta=new ListaCCliente();
-LUsuarios.append(2354168452525,"WIlfred Perez","Wilfred","","Administrador","123","+502 (123) 123-4567",lsta);
+LUsuarios.append(2354168452525,"WIlfred Perez","Wilfred","","Administrador","123","+502 (123) 123-4567",lsta,0);
 
 
 
@@ -142,14 +143,38 @@ function DivCompraL2(){
     var texval=document.getElementById("textCantidad").value;
     if((cantidadLMO>texval)||((cantidadLMO==texval))){
         MOrtogonal.Comprar(isbnLibroMO,(cantidadLMO-texval));
-
+        var nom=MOrtogonal.ObtenerNombre(isbnLibroMO);
+        for(let i=1;i<=texval;i++){
+            LUsuarios.Agregar_lista(ContUsuario,nom);
+        }
+        var comps=LUsuarios.devCompras(ContUsuario);
+        comps=comps+texval;
+        LUsuarios.acCompras(ContUsuario,comps);
     }else if(cantidadLMO<texval){
+        var nom=MOrtogonal.ObtenerNombre(isbnLibroMO);
+        var debe=0;
+        var tengo=0;
+        debe=texval-cantidadLMO;
+        tengo=texval-debe;
+
+        if(tengo==0){
+
+        }else{
+            for(let i=1;i<=tengo;i++){
+                LUsuarios.Agregar_lista(ContUsuario,nom);
+            }
+
+        }
+        MOrtogonal.Comprar(isbnLibroMO,(cantidadLMO-tengo));
+
+            
+
+        var comps=LUsuarios.devCompras(ContUsuario);
+        comps=comps+tengo;
+        LUsuarios.acCompras(ContUsuario,comps);
 
     }
-    var nom=MOrtogonal.ObtenerNombre(isbnLibroMO);
-    for(let i=1;i<=texval;i++){
-        LUsuarios.Agregar_lista(ContUsuario,nom);
-    }
+    
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
     LUsuarios.Mostrar();
     LUsuarios.Graficar();
@@ -192,13 +217,36 @@ function DivCompraLL2(){
     var texval=document.getElementById("textCantidad2").value;
     if((cantidadLMD>texval)||((cantidadLMD==texval))){
         MDispersa.Comprar(isbnLibroMD,(cantidadLMD-texval));
+        var nom=MDispersa.ObtenerNombre(isbnLibroMD);
+        for(let i=1;i<=texval;i++){
+            LUsuarios.Agregar_lista(ContUsuario,nom);
+        }
+        var comps=LUsuarios.devCompras(ContUsuario);
+        comps=comps+texval;
+        LUsuarios.acCompras(ContUsuario,comps);
+    }else if(cantidadLMO<texval){
+        var nom=MOrtogonal.ObtenerNombre(isbnLibroMO);
+        var debe=0;
+        var tengo=0;
+        debe=texval-cantidadLMO;
+        tengo=texval-debe;
 
-    }else if(cantidadLMD<texval){
+        if(tengo==0){
 
-    }
-    var nom=MDispersa.ObtenerNombre(isbnLibroMD);
-    for(let i=1;i<=texval;i++){
-        LUsuarios.Agregar_lista(ContUsuario,nom);
+        }else{
+            for(let i=1;i<=tengo;i++){
+                LUsuarios.Agregar_lista(ContUsuario,nom);
+            }
+
+        }
+        MDispersa.Comprar(isbnLibroMD,(cantidadLMD-tengo));
+
+            
+
+        var comps=LUsuarios.devCompras(ContUsuario);
+        comps=comps+tengo;
+        LUsuarios.acCompras(ContUsuario,comps);
+
     }
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
     LUsuarios.Mostrar();
@@ -290,6 +338,16 @@ function bblogin(){
 
 }
 
+function Topp5(){
+    var nuevaL= LUsuarios;
+    nuevaL.ordenarBurbuja();
+    nuevaL.MostrarTop()
+
+
+
+}
+
+
 Bre.addEventListener('click',Registro,true);
 BTCM.addEventListener('click',graficar,true);
 BTsalir.addEventListener('click',Fsalir,true);
@@ -301,6 +359,7 @@ BTCompraLL.addEventListener('click',DivCompraLL,true);
 BTCompraL2.addEventListener('click',DivCompraL2,true);
 BTCompraLL2.addEventListener('click',DivCompraLL2,true);
 BTLOGIN.addEventListener('click',bblogin,true);
+Top5.addEventListener('click',Topp5,true);
 
 
 
@@ -379,7 +438,7 @@ function CargarUsuarios(e) {
         for (const key in object) {
             let CUsuarios = object[key];
             let listaa=new ListaCCliente();
-            LUsuarios.append(CUsuarios.dpi,CUsuarios.nombre_completo,CUsuarios.nombre_usuario,CUsuarios.correo,CUsuarios.rol,CUsuarios.contrasenia,CUsuarios.telefono,listaa);
+            LUsuarios.append(CUsuarios.dpi,CUsuarios.nombre_completo,CUsuarios.nombre_usuario,CUsuarios.correo,CUsuarios.rol,CUsuarios.contrasenia,CUsuarios.telefono,listaa,0);
         }
         
     }
